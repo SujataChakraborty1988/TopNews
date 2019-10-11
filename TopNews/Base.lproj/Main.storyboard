@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--News List View Controller-->
         <scene sceneID="Blf-1u-GW7">
             <objects>
-                <collectionViewController id="KGX-ZE-w79" customClass="NewsListViewController" customModule="TopNews" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="NewsListViewController" id="KGX-ZE-w79" customClass="NewsListViewController" customModule="TopNews" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ly2-I5-0v3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +39,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7n-KU-F5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="825" y="-538"/>
+        </scene>
+        <!--News Details View Controller-->
+        <scene sceneID="ECR-0h-ifd">
+            <objects>
+                <viewController storyboardIdentifier="NewsDetailsViewController" id="92w-wK-TKm" customClass="NewsDetailsViewController" customModule="TopNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UgR-3X-tkh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aj0-Su-6Sp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aj0-Su-6Sp" firstAttribute="top" secondItem="9nG-kW-IsC" secondAttribute="top" id="7Pe-EJ-6J9"/>
+                            <constraint firstItem="aj0-Su-6Sp" firstAttribute="leading" secondItem="9nG-kW-IsC" secondAttribute="leading" id="A6c-if-u7f"/>
+                            <constraint firstAttribute="bottom" secondItem="aj0-Su-6Sp" secondAttribute="bottom" id="WgE-0B-AHQ"/>
+                            <constraint firstItem="aj0-Su-6Sp" firstAttribute="trailing" secondItem="9nG-kW-IsC" secondAttribute="trailing" id="dEV-6h-JAF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9nG-kW-IsC"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="aj0-Su-6Sp" id="J9R-gr-thw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cak-3S-2dp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730.4347826086957" y="-532.36607142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="58D-zW-nVt">

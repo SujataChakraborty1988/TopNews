@@ -19,14 +19,15 @@ protocol NewsListBusinessLogic
 
 protocol NewsListDataStore
 {
-    //var name: String { get set }
+    var newsList : [News] { get  }
+
 }
 
 class NewsListInteractor: NewsListBusinessLogic, NewsListDataStore
 {
-    var presenter: NewsListPresentationLogic?
-    var worker: NewsListWorker? = NewsListWorker()
-    var newsList : [News]? = [News]()
+    var presenter : NewsListPresentationLogic?
+    var worker    : NewsListWorker? = NewsListWorker()
+    var newsList  : [News] = [News]()
     
     
     // MARK: Fetch news
@@ -39,7 +40,7 @@ class NewsListInteractor: NewsListBusinessLogic, NewsListDataStore
             
             if let article = article , let articleList = article.articles
             {
-                weakself?.newsList?.append(contentsOf: articleList)
+                weakself?.newsList.append(contentsOf: articleList)
                 
                 if  articleList.count == 0
                 {
@@ -48,7 +49,7 @@ class NewsListInteractor: NewsListBusinessLogic, NewsListDataStore
                 }
                 else
                 {
-                    let response = NewsList.FetchNews.Response(news: weakself!.newsList!)
+                    let response = NewsList.FetchNews.Response(news: weakself!.newsList)
                     weakself?.presenter?.presentNewsList(response: response)
                 }
             }

@@ -79,16 +79,14 @@ class NewsListViewController: UICollectionViewController, NewsListDisplayLogic
     
     // MARK: Routing
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func navigateToNewsDetailsPage()
     {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
+        if let router = router {
+            router.routeToNewsDetailsPage()
         }
+        
     }
-    
+
     
     // MARK: View lifecycle
     
@@ -189,6 +187,12 @@ extension NewsListViewController
         cell.tag = indexPath.item
         cell.configure(with: displayedNewsItem)
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        navigateToNewsDetailsPage()
+        
     }
 }
 
