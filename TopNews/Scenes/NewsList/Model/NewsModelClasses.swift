@@ -9,7 +9,7 @@
 import Foundation
 
 
-class News : Decodable
+struct News : Decodable
 {
     let source       : Source?
     let title        : String?
@@ -20,12 +20,12 @@ class News : Decodable
     let url          : String?
 }
 
-class Source : Decodable
+struct Source : Decodable
 {
     let name : String?
 }
 
-class Articles : Decodable
+struct Articles : Decodable
 {
     let articles : [News]?
 }
