@@ -14,15 +14,15 @@ import UIKit
 
 protocol NewsDetailsPresentationLogic
 {
-  func presentNewsDetails(response: NewsDetails.FetchNewsDetails.Response)
+    func presentNewsDetails(response: NewsDetails.FetchNewsDetails.Response)
 }
 
 class NewsDetailsPresenter: NewsDetailsPresentationLogic
 {
-  weak var viewController: NewsDetailsDisplayLogic?
-  
-  // MARK: Do something
-  
+    weak var viewController: NewsDetailsDisplayLogic?
+    
+    // MARK: Do something
+    
     func presentNewsDetails(response: NewsDetails.FetchNewsDetails.Response)
     {
         

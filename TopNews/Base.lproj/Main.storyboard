@@ -61,17 +61,23 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-3r-edS">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aj0-Su-6Sp" firstAttribute="top" secondItem="9nG-kW-IsC" secondAttribute="top" id="7Pe-EJ-6J9"/>
                             <constraint firstItem="aj0-Su-6Sp" firstAttribute="leading" secondItem="9nG-kW-IsC" secondAttribute="leading" id="A6c-if-u7f"/>
+                            <constraint firstItem="fxw-3r-edS" firstAttribute="centerY" secondItem="9nG-kW-IsC" secondAttribute="centerY" id="D4N-Wr-JLV"/>
                             <constraint firstAttribute="bottom" secondItem="aj0-Su-6Sp" secondAttribute="bottom" id="WgE-0B-AHQ"/>
                             <constraint firstItem="aj0-Su-6Sp" firstAttribute="trailing" secondItem="9nG-kW-IsC" secondAttribute="trailing" id="dEV-6h-JAF"/>
+                            <constraint firstItem="fxw-3r-edS" firstAttribute="centerX" secondItem="9nG-kW-IsC" secondAttribute="centerX" id="mrF-Tg-eqr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9nG-kW-IsC"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fxw-3r-edS" id="kqU-ZX-d5C"/>
                         <outlet property="webView" destination="aj0-Su-6Sp" id="J9R-gr-thw"/>
                     </connections>
                 </viewController>

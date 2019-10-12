@@ -17,19 +17,22 @@ protocol NewsDetailsDisplayLogic: class
 {
     /**
      Use this function to get url and title to load the news
- 
+     
      */
     func displayNewsDetails(viewModel: NewsDetails.FetchNewsDetails.ViewModel)
     func displayError()
     
 }
 
-class NewsDetailsViewController: UIViewController, NewsDetailsDisplayLogic
+class NewsDetailsViewController: UIViewController, NewsDetailsDisplayLogic , WKNavigationDelegate
 {
     var interactor: NewsDetailsBusinessLogic?
     var router: (NSObjectProtocol & NewsDetailsRoutingLogic & NewsDetailsDataPassing)?
     
-    @IBOutlet var webView : WKWebView!
+    var displayedNews : NewsDetails.FetchNewsDetails.ViewModel.DisplayNews?
+    
+    @IBOutlet var webView           : WKWebView!
+    @IBOutlet var activityIndicator : UIActivityIndicatorView!
     
     
     // MARK: Object lifecycle
@@ -117,7 +120,31 @@ class NewsDetailsViewController: UIViewController, NewsDetailsDisplayLogic
         
     }
     
+    
+    
+}
 
+extension NewsDetailsViewController
+{
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        
+        
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        // Set the indicator everytime webView started loading
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        
+    }
     
 }
 

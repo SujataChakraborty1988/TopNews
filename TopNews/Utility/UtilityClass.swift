@@ -63,7 +63,7 @@ class UtilityClass
         }
         else if (minutes > 0)
         {
-            if hours == 1
+            if minutes == 1
             {
                 return "a minute ago"
             }
@@ -93,21 +93,7 @@ class UtilityClass
             return Constants.kJustNowConstant
         }
         
-        return Constants.kJustNowConstant
-        
     }
     
     
-    /**
-     
-     The function will be used to convert Date to string "Sep 21, 2017"
-     
-     */
-    
-    class func dateToStringFormat(date : Date) -> String
-    {
-        UtilityClass.dateFormatterInstance.dateFormat = "MMM d, yyyy"
-        let dateInString = UtilityClass.dateFormatterInstance.string(from: date)
-        return dateInString
-    }
 }
