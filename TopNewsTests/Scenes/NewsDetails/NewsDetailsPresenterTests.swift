@@ -40,6 +40,7 @@ class NewsDetailsPresenterTests: XCTestCase {
     class NewsDetailsDisplayLogicSpy: NewsDetailsDisplayLogic
     {
         
+ 
         // MARK: Method call expectations
         
         var displayFetchedNewsCalled = false
@@ -53,8 +54,8 @@ class NewsDetailsPresenterTests: XCTestCase {
             displayFetchedNewsCalled = true
         }
         
-        func displayError() {
-            
+        func displayError(error: RBError?) {
+
             displayErrorCalled = true
         }
         

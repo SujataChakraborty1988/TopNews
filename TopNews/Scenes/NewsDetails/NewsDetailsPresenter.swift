@@ -25,20 +25,29 @@ class NewsDetailsPresenter: NewsDetailsPresentationLogic
     
     func presentNewsDetails(response: NewsDetails.FetchNewsDetails.Response)
     {
-        
-        if let url =  response.news.url
+        if NetworkManager.sharedInstance.isInternetAccessible == true
         {
-            let title = response.news.title ?? ""
-            
-            let displayedNews = NewsDetails.FetchNewsDetails.ViewModel.DisplayNews.init(title: title, url: url)
-            
-            
-            let viewModel = NewsDetails.FetchNewsDetails.ViewModel.init(newsDetails: displayedNews)
-            viewController?.displayNewsDetails(viewModel: viewModel)
+            if let url =  response.news.url
+            {
+                let title = response.news.title ?? ""
+                
+                let displayedNews = NewsDetails.FetchNewsDetails.ViewModel.DisplayNews.init(title: title, url: url)
+                
+                
+                let viewModel = NewsDetails.FetchNewsDetails.ViewModel.init(newsDetails: displayedNews)
+                viewController?.displayNewsDetails(viewModel: viewModel)
+            }
+            else
+            {
+                viewController?.displayError(error: nil)
+            }
         }
         else
         {
-            viewController?.displayError()
+            let nError = RBError.init(RBErrorCode: RBErrorCode.NetworkError)
+            nError.rbErrorDebugInfo = "Network absent while fetching news"
+            viewController?.displayError(error: nError)
+
         }
     }
 }

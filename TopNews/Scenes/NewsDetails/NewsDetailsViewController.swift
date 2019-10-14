@@ -20,7 +20,7 @@ protocol NewsDetailsDisplayLogic: class
      
      */
     func displayNewsDetails(viewModel: NewsDetails.FetchNewsDetails.ViewModel)
-    func displayError()
+    func displayError(error : RBError?)
     
 }
 
@@ -110,13 +110,29 @@ class NewsDetailsViewController: UIViewController, NewsDetailsDisplayLogic , WKN
         }
         else
         {
-            displayError()
+            displayError(error: nil)
         }
         
     }
     
-    func displayError()
+    func displayError(error : RBError?)
     {
+        if error?.errorCode == RBErrorCode.NetworkError
+        {
+            let alert = UIAlertController(title: "No Network",
+                                          message: "Please try agian",
+                                          preferredStyle: .alert)
+            let okACtion = UIAlertAction(title: "OK",
+                                         style: .default) { (action) in
+            }
+            alert.addAction(okACtion)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            //Show or log other errors
+        }
         
     }
     
